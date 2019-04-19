@@ -26,7 +26,7 @@ namespace DiskScheduling
             GenerateRandomRequests(15);
             foreach(Request r in os.Requests)
             {
-                listBox1.Items.Add(r.SectorNumber);
+                requestedSectorNumbersLbx.Items.Add(r.SectorNumber);
             }
         }
 
@@ -35,6 +35,8 @@ namespace DiskScheduling
             // The timer object handles 1 request per tick and also adds one new request at the end.
             removeItemsTimer.Interval = 200;
             removeItemsTimer.Enabled = true;
+
+            ChangeButtonEnabling();
         }
 
         private void GenerateRandomRequests(int numberOfRandomRequests)
@@ -81,10 +83,10 @@ namespace DiskScheduling
             {
                 GenerateRandomRequests(1);
 
-                listBox1.Items.Clear();
+                requestedSectorNumbersLbx.Items.Clear();
                 foreach(Request r in os.Requests)
                 {
-                    listBox1.Items.Add(r.SectorNumber);
+                    requestedSectorNumbersLbx.Items.Add(r.SectorNumber);
                 }
             }
 
@@ -93,6 +95,14 @@ namespace DiskScheduling
         private void btnStop_Click(object sender, EventArgs e)
         {
             removeItemsTimer.Enabled = false;
+
+            ChangeButtonEnabling();
+        }
+
+        private void ChangeButtonEnabling()
+        {
+            runBtn.Enabled = !runBtn.Enabled;
+            btnStop.Enabled = !btnStop.Enabled;
         }
     }
 }
