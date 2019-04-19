@@ -6,21 +6,22 @@ namespace DiskScheduling
 {
 	public class HardDisk
 	{
+        private int headLocation;
 		public int HeadLocation
 		{
 			get
 			{
-				throw new NotImplementedException();
+                return headLocation;
 			}
 			set
 			{
-				throw new NotImplementedException();
+                headLocation = value;
 			}
 		}
 
 		public HardDisk()
 		{
-			throw new NotImplementedException();
+            headLocation = 0;
 		}
 	}
 }

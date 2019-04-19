@@ -17,12 +17,15 @@ namespace DiskScheduling
         // Ints will be of request type.
         private List<Request> myRequests;
         private OperatingSystem os;
+        private HardDisk hd;
         public Form1()
         {
             InitializeComponent();
             rng = new Random();
             // Generate a list of random requests based on set constant.
             myRequests = GenerateRandomRequests(NUMBER_OF_RANDOM_REQUESTS);
+            hd = new HardDisk();
+            os = new OperatingSystem(hd);
         }
 
         private void runBtn_Click(object sender, EventArgs e)
