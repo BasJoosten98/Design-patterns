@@ -76,6 +76,7 @@ namespace DiskScheduling
         {
             int count = os.Requests.Count;
             os.nextDiskTick();
+            lblHead.Text = "Head: " + os.Disk.HeadLocation.ToString();
             if(count != os.Requests.Count) //update listbox and add request
             {
                 GenerateRandomRequests(1);
@@ -87,6 +88,11 @@ namespace DiskScheduling
                 }
             }
 
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            removeItemsTimer.Enabled = false;
         }
     }
 }
