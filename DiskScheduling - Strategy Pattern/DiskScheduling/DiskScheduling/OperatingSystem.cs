@@ -56,7 +56,7 @@ namespace DiskScheduling
                 int number = rng.Next(100);
                 for (int j = 0; j < requests.Count; j++)
                 {
-                    if (requests[i].SectorNumber == number)
+                    if (requests[j].SectorNumber == number)
                     {
                         number = rng.Next(100);
                         j = 0;
