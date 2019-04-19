@@ -6,7 +6,7 @@ namespace DiskScheduling
 {
 	public class Scan : IDiskScheduling
 	{
-        bool goingUp = false;
+        private bool goingUp = false;
 		public int HandleRequest(List<Request> requests, int diskHeadLocation)
         {
             foreach(Request r in requests)
