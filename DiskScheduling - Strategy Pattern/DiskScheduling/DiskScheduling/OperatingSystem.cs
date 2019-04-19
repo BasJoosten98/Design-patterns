@@ -49,8 +49,27 @@ namespace DiskScheduling
 
         public void nextDiskTick()
         {
+            int amountOfRequests = requests.Count;
             int diskMovement = diskschedulingMethod.HandleRequest(requests, disk.HeadLocation);
             disk.HeadLocation += diskMovement;
+
+            if(amountOfRequests != requests.Count) //Request has been accomplished
+            {
+            //add new request
+            Random rng = new Random();
+            int number = rng.Next(100);                  
+            for (int j = 0; j < requests.Count; j++)
+            {
+                if (requests[j].SectorNumber == number)
+                {
+                    number = rng.Next(100);
+                    j = 0;
+                }
+            }
+            Request req = new Request(number);
+            requests.Add(req);
+                
+            }
         }
 	}
 }

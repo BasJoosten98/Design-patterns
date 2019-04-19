@@ -14,7 +14,7 @@ namespace DiskScheduling
                 if(r.SectorNumber == diskHeadLocation)
                 {
                     requests.Remove(r);
-                    break;
+                    return 0;
                 }
             }
 			if(diskHeadLocation == 100)
