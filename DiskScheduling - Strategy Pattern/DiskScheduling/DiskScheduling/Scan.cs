@@ -6,9 +6,9 @@ namespace DiskScheduling
 {
 	public class Scan : IDiskScheduling
 	{
-		public void HandleRequest()
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public int HandleRequest(List<Request> requests, int diskHeadLocation)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

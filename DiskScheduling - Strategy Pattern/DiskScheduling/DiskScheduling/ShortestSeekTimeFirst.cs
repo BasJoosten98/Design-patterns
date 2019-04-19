@@ -12,21 +12,19 @@ namespace DiskScheduling
             if (requests.Count > 0)
             {
                 Request closestRequest = requests[0];
-                int closestSectorNumber = closestRequest.SectorNumber;
                 foreach(Request r in requests)
                 {
                     if (Math.Abs(r.SectorNumber - diskHeadLocation) < Math.Abs(closestRequest.SectorNumber - diskHeadLocation))
                     {
                         closestRequest = r;
-                        closestSectorNumber = r.SectorNumber;
                     }
                 }
 
-                if (closestSectorNumber < diskHeadLocation)
+                if (closestRequest.SectorNumber < diskHeadLocation)
                 {
                     movement = -1;
                 }
-                else if (closestSectorNumber == diskHeadLocation)
+                else if (closestRequest.SectorNumber == diskHeadLocation)
                 {
                     requests.Remove(closestRequest);
                 }
