@@ -22,10 +22,19 @@ namespace DiskScheduling
         {
             InitializeComponent();
             rng = new Random();
-            // Generate a list of random requests based on set constant.
-            myRequests = GenerateRandomRequests(NUMBER_OF_RANDOM_REQUESTS);
             hd = new HardDisk();
             os = new OperatingSystem(hd);
+            // Generate a list of random requests based on set constant.
+            myRequests = GenerateRandomRequests(NUMBER_OF_RANDOM_REQUESTS);
+            foreach(Request r in myRequests)
+            {
+                os.AddRequest(r);
+            }
+
+            foreach(Request r in os.Requests)
+            {
+                listBox1.Items.Add(r.SectorNumber);
+            }
         }
 
         private void runBtn_Click(object sender, EventArgs e)

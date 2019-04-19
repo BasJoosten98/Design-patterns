@@ -6,17 +6,18 @@ namespace DiskScheduling
 {
 	public class Request
 	{
+        private int sectorNumber;
 		public int SectorNumber
 		{
 			get
 			{
-				throw new NotImplementedException();
+                return sectorNumber;
 			}
 		}
 
-		public Request(int sectorNumber)
+		public Request(int SectorNumber)
 		{
-			throw new NotImplementedException();
+            sectorNumber = SectorNumber;
 		}
 	}
 }
