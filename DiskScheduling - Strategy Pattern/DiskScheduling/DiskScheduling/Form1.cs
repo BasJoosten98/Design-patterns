@@ -12,24 +12,15 @@ namespace DiskScheduling
 {
     public partial class Form1 : Form
     {
-        private Random rng;
-        private const int NUMBER_OF_RANDOM_REQUESTS = 15;
-        // Ints will be of request type.
-        private List<Request> myRequests;
+        //private const int NUMBER_OF_RANDOM_REQUESTS = 15;
         private OperatingSystem os;
         private HardDisk hd;
         public Form1()
         {
             InitializeComponent();
-            rng = new Random();
             hd = new HardDisk();
             os = new OperatingSystem(hd);
             // Generate a list of random requests based on set constant.
-            myRequests = GenerateRandomRequests(NUMBER_OF_RANDOM_REQUESTS);
-            foreach(Request r in myRequests)
-            {
-                os.AddRequest(r);
-            }
 
             foreach(Request r in os.Requests)
             {
@@ -44,27 +35,27 @@ namespace DiskScheduling
             removeItemsTimer.Enabled = true;
         }
 
-        private List<Request> GenerateRandomRequests(int numberOfRandomRequests)
-        {
-            List<Request> tempList = new List<Request>();
-            for (int i = 0; i < numberOfRandomRequests; i++)
-            {
-                // Random int < 100, lets say it is possible for different processes
-                // to request access to the same sector, thus us not checking for uniqueness.
-                int number = rng.Next(100);
-                for(int j = 0; j < tempList.Count; j++)
-                {
-                    if(tempList[i].SectorNumber == number)
-                    {
-                        number = rng.Next(100);
-                        j = 0;
-                    }
-                }
-                Request req = new Request(number);
-                tempList.Add(req);
-            }
-            return tempList;
-        }
+        //private List<Request> GenerateRandomRequests(int numberOfRandomRequests)
+        //{
+        //    List<Request> tempList = new List<Request>();
+        //    for (int i = 0; i < numberOfRandomRequests; i++)
+        //    {
+        //        // Random int < 100, lets say it is possible for different processes
+        //        // to request access to the same sector, thus us not checking for uniqueness.
+        //        int number = rng.Next(100);
+        //        for(int j = 0; j < tempList.Count; j++)
+        //        {
+        //            if(tempList[i].SectorNumber == number)
+        //            {
+        //                number = rng.Next(100);
+        //                j = 0;
+        //            }
+        //        }
+        //        Request req = new Request(number);
+        //        tempList.Add(req);
+        //    }
+        //    return tempList;
+        //}
 
         private void rbScan_CheckedChanged(object sender, EventArgs e)
         {
@@ -83,7 +74,17 @@ namespace DiskScheduling
 
         private void removeItemsTimer_Tick(object sender, EventArgs e)
         {
+            int count = os.Requests.Count;
             os.nextDiskTick();
+            if(count != os.Requests.Count) //update listbox
+            {
+                listBox1.Items.Clear();
+                foreach(Request r in os.Requests)
+                {
+                    listBox1.Items.Add(r.SectorNumber);
+                }
+            }
+
         }
     }
 }
