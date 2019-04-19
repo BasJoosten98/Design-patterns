@@ -47,7 +47,7 @@ namespace DiskScheduling
             requests = new List<Request>();
         }
 
-        public void nextDiskTick()
+        public void NextDiskTick()
         {
             int diskMovement = diskschedulingMethod.HandleRequest(requests, disk.HeadLocation);
             disk.HeadLocation += diskMovement;

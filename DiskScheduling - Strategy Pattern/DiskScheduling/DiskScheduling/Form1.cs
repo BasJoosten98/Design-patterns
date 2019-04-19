@@ -77,7 +77,7 @@ namespace DiskScheduling
         private void removeItemsTimer_Tick(object sender, EventArgs e)
         {
             int count = os.Requests.Count;
-            os.nextDiskTick();
+            os.NextDiskTick();
             lblHead.Text = "Head: " + os.Disk.HeadLocation.ToString();
             if(count != os.Requests.Count) //update listbox and add request
             {
