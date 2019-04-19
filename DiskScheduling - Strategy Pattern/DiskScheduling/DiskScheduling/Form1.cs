@@ -51,7 +51,16 @@ namespace DiskScheduling
             {
                 // Random int < 100, lets say it is possible for different processes
                 // to request access to the same sector, thus us not checking for uniqueness.
-                Request req = new Request(rng.Next(100));
+                int number = rng.Next(100);
+                for(int j = 0; j < tempList.Count; j++)
+                {
+                    if(tempList[i].SectorNumber == number)
+                    {
+                        number = rng.Next(100);
+                        j = 0;
+                    }
+                }
+                Request req = new Request(number);
                 tempList.Add(req);
             }
             return tempList;

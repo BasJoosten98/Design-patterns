@@ -6,9 +6,27 @@ namespace DiskScheduling
 {
 	public class Scan : IDiskScheduling
 	{
-        public int HandleRequest(List<Request> requests, int diskHeadLocation)
+        bool goingUp = false;
+		public int HandleRequest(List<Request> requests, int diskHeadLocation)
         {
-            throw new NotImplementedException();
+            foreach(Request r in requests)
+            {
+                if(r.SectorNumber == diskHeadLocation)
+                {
+                    requests.Remove(r);
+                    return 0;
+                }
+            }
+			if(diskHeadLocation == 100)
+            {
+                goingUp = false;
+            }
+            else if(diskHeadLocation == 0)
+            {
+                goingUp = true;
+            }
+            if (goingUp) { return 1; }
+            else { return -1; }         
         }
     }
 }
