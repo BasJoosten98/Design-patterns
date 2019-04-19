@@ -74,7 +74,7 @@ namespace DiskScheduling
 
         private void removeItemsTimer_Tick(object sender, EventArgs e)
         {
-
+            os.nextDiskTick();
         }
     }
 }

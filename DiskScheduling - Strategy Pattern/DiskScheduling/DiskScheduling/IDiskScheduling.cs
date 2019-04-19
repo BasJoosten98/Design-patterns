@@ -6,6 +6,6 @@ namespace DiskScheduling
 {
 	public interface IDiskScheduling
 	{
-		void HandleRequest();
+		int HandleRequest(List<Request> requests, int diskHeadLocation);
 	}
 }
