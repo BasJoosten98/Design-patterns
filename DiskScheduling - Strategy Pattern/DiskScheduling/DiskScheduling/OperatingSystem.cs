@@ -9,7 +9,6 @@ namespace DiskScheduling
         private IDiskScheduling diskschedulingMethod;
         private HardDisk disk;
         private List<Request> requests;
-        private Random rng;
         public IDiskScheduling DiskschedulingMethod
 		{
 			get
@@ -46,49 +45,12 @@ namespace DiskScheduling
 		{
             disk = Disk;
             requests = new List<Request>();
-            rng = new Random();
-
-            //Create random request list
-            for (int i = 0; i < 15; i++)
-            {
-                // Random int < 100, lets say it is possible for different processes
-                // to request access to the same sector, thus us not checking for uniqueness.
-                int number = rng.Next(100);
-                for (int j = 0; j < requests.Count; j++)
-                {
-                    if (requests[j].SectorNumber == number)
-                    {
-                        number = rng.Next(100);
-                        j = 0;
-                    }
-                }
-                Request req = new Request(number);
-                requests.Add(req);
-            }
         }
 
         public void nextDiskTick()
         {
-            int amountOfRequests = requests.Count;
             int diskMovement = diskschedulingMethod.HandleRequest(requests, disk.HeadLocation);
             disk.HeadLocation += diskMovement;
-
-            if(amountOfRequests != requests.Count) //Request has been accomplished
-            {
-            //add new request
-            int number = rng.Next(100);                  
-            for (int j = 0; j < requests.Count; j++)
-            {
-                if (requests[j].SectorNumber == number)
-                {
-                    number = rng.Next(100);
-                    j = 0;
-                }
-            }
-            Request req = new Request(number);
-            requests.Add(req);
-                
-            }
         }
 	}
 }

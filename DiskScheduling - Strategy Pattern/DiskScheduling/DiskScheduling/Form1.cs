@@ -12,16 +12,18 @@ namespace DiskScheduling
 {
     public partial class Form1 : Form
     {
-        //private const int NUMBER_OF_RANDOM_REQUESTS = 15;
+        private const int NUMBER_OF_RANDOM_REQUESTS = 15;
         private OperatingSystem os;
         private HardDisk hd;
+        private Random rng;
         public Form1()
         {
             InitializeComponent();
+            rng = new Random();
             hd = new HardDisk();
             os = new OperatingSystem(hd);
             // Generate a list of random requests based on set constant.
-
+            GenerateRandomRequests(15);
             foreach(Request r in os.Requests)
             {
                 listBox1.Items.Add(r.SectorNumber);
@@ -35,27 +37,25 @@ namespace DiskScheduling
             removeItemsTimer.Enabled = true;
         }
 
-        //private List<Request> GenerateRandomRequests(int numberOfRandomRequests)
-        //{
-        //    List<Request> tempList = new List<Request>();
-        //    for (int i = 0; i < numberOfRandomRequests; i++)
-        //    {
-        //        // Random int < 100, lets say it is possible for different processes
-        //        // to request access to the same sector, thus us not checking for uniqueness.
-        //        int number = rng.Next(100);
-        //        for(int j = 0; j < tempList.Count; j++)
-        //        {
-        //            if(tempList[i].SectorNumber == number)
-        //            {
-        //                number = rng.Next(100);
-        //                j = 0;
-        //            }
-        //        }
-        //        Request req = new Request(number);
-        //        tempList.Add(req);
-        //    }
-        //    return tempList;
-        //}
+        private void GenerateRandomRequests(int numberOfRandomRequests)
+        {
+            for (int i = 0; i < numberOfRandomRequests; i++)
+            {
+                // Random int < 100, lets say it is possible for different processes
+                // to request access to the same sector, thus us not checking for uniqueness.
+                int number = rng.Next(100);
+                for (int j = 0; j < os.Requests.Count; j++)
+                {
+                    if (os.Requests[j].SectorNumber == number)
+                    {
+                        number = rng.Next(100);
+                        j = 0;
+                    }
+                }
+                Request req = new Request(number);
+                os.Requests.Add(req);
+            }
+        }
 
         private void rbScan_CheckedChanged(object sender, EventArgs e)
         {
@@ -76,8 +76,10 @@ namespace DiskScheduling
         {
             int count = os.Requests.Count;
             os.nextDiskTick();
-            if(count != os.Requests.Count) //update listbox
+            if(count != os.Requests.Count) //update listbox and add request
             {
+                GenerateRandomRequests(1);
+
                 listBox1.Items.Clear();
                 foreach(Request r in os.Requests)
                 {
