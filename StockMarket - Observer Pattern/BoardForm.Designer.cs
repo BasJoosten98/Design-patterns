@@ -109,9 +109,9 @@
 
         private System.Windows.Forms.ListBox stockListBox;
         private System.Windows.Forms.ListBox currentPriceListbox;
-        private System.Windows.Forms.ListBox relativeDifferenceListBox;
         private System.Windows.Forms.Label stockLb;
         private System.Windows.Forms.Label currentPriceLb;
         private System.Windows.Forms.Label differenceLb;
+        protected System.Windows.Forms.ListBox relativeDifferenceListBox;
     }
 }

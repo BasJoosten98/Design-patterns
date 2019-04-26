@@ -12,10 +12,11 @@ namespace StockMarket___Observer_Pattern
 {
     partial class NewsPaperForm : BoardForm, IObserver
     {
+        private DateTime date;
         public NewsPaperForm(StockMarket stockMarket) : base(stockMarket)
         {
             InitializeComponent();
-            DateTime date = DateTime.Today.Date;
+            date = DateTime.Today.Date;
             dayLbl.Text = $"Date: {date.Year}-{date.Month}-{date.Day}";
         }
 
@@ -27,16 +28,36 @@ namespace StockMarket___Observer_Pattern
             // the day is over and the newspaper is 'deliverd' every day.
             if ((stockMarketTime % 24000) == 0)
             {
+                if (stockMarketTime > 0)
+                {
+                    date = date.AddDays(1);
+                    dayLbl.Text = $"Date: {date.Year}-{date.Month}-{date.Day}";
+                }
                 UpdateBoard(stocks);
-                DateTime date = DateTime.Today.Date;
-                date = date.AddDays(1);
-                dayLbl.Text = $"Date: {date.Year}-{date.Month}-{date.Day}";
+                UpdateDifference(stocks);
             }
         }
 
         private void NewsPaperForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             stockMarket.Detach(this);
+        }
+
+        private void UpdateDifference(List<Stock> stocks)
+        {
+            decimal difference;
+            string increaseOrDecrease = string.Empty;
+
+            foreach (Stock stock in stocks)
+            {
+                increaseOrDecrease = string.Empty;
+                difference = (stock.GetCurrentPrice() - stock.GetPreviousDayPrice()) / stock.GetPreviousDayPrice();
+                if (difference > 0)
+                {
+                    increaseOrDecrease = "+";
+                }
+                relativeDifferenceListBox.Items.Add($"{increaseOrDecrease}{difference:0.00}%");
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace StockMarket___Observer_Pattern
 	{
         private string name;
 		private decimal openingPrice;
+        private decimal previousDayPrice;
 		private decimal currentPrice;
 
         public Stock(string name, decimal initialPrice)
@@ -47,19 +48,20 @@ namespace StockMarket___Observer_Pattern
             }
         }
 
-        public decimal GetDifference()
-        {
-            return (currentPrice - openingPrice) / openingPrice;
-        }
-
         public decimal GetCurrentPrice()
 		{
 			return currentPrice;
 		}
 
-		public void SetOpeningPrice(decimal newPrice)
+        public decimal GetPreviousDayPrice()
+        {
+            return previousDayPrice;
+        }
+
+        public void SetOpeningPrice(decimal newPrice)
 		{
-			openingPrice = newPrice;
+            previousDayPrice = openingPrice;
+            openingPrice = newPrice;
 		}
 
 		public decimal GetOpeningPrice()

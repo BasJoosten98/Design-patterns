@@ -23,6 +23,7 @@ namespace StockMarket___Observer_Pattern
             stockMarket = new StockMarket("AEX");
             List<Stock> stocks = new List<Stock>
             {
+                // Prices based on opening prices of 2019-04-26
                 new Stock("ABN AMRO", 20.560m),
                 new Stock("Ahold Delhaize", 21.320m),
                 new Stock("Heineken", 95.220m),

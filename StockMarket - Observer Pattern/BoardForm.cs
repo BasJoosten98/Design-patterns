@@ -44,18 +44,9 @@ namespace StockMarket___Observer_Pattern
         private void AddStock(Stock stock)
         {
             decimal currentPrice = stock.GetCurrentPrice();
-            decimal openPrice = stock.GetOpeningPrice();
-            decimal difference = stock.GetDifference();
-            string increaseOrDecrease = string.Empty;
-
-            if (difference > 0)
-            {
-                increaseOrDecrease = "+";
-            }
 
             stockListBox.Items.Add(stock.GetName());
-            currentPriceListbox.Items.Add($"€{currentPrice}");
-            relativeDifferenceListBox.Items.Add($"{increaseOrDecrease}{difference:0.00}%");
+            currentPriceListbox.Items.Add(currentPrice);
         }
     }
 }

@@ -15,7 +15,6 @@ namespace StockMarket___Observer_Pattern
 
 		public void Attach(IObserver o)
 		{
-            Console.WriteLine("Adding observer");
             myObservers.Add(o);
 		}
 
@@ -28,7 +27,6 @@ namespace StockMarket___Observer_Pattern
 		{
 			foreach (IObserver o in myObservers)
             {
-                Console.WriteLine("Updating observer.");
                 o.UpdateObservers();
             }
 		}
