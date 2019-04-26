@@ -57,16 +57,16 @@
             // 
             // stockMarketTimer
             // 
-            this.stockMarketTimer.Interval = 10;
+            this.stockMarketTimer.Interval = 1000;
+            this.stockMarketTimer.Tick += new System.EventHandler(this.stockMarketTimer_Tick_1);
             // 
             // startStopBtn
             // 
-            this.startStopBtn.Enabled = false;
-            this.startStopBtn.Location = new System.Drawing.Point(105, 92);
+            this.startStopBtn.Location = new System.Drawing.Point(114, 92);
             this.startStopBtn.Name = "startStopBtn";
-            this.startStopBtn.Size = new System.Drawing.Size(103, 23);
+            this.startStopBtn.Size = new System.Drawing.Size(75, 23);
             this.startStopBtn.TabIndex = 2;
-            this.startStopBtn.Text = "Start Simulation";
+            this.startStopBtn.Text = "Start";
             this.startStopBtn.UseVisualStyleBackColor = true;
             this.startStopBtn.Click += new System.EventHandler(this.startStopBtn_Click);
             // 

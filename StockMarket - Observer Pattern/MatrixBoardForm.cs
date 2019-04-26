@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace StockMarket___Observer_Pattern
 {
-    partial class MatrixBoardForm : BoardForm, IObserver
+    public partial class MatrixBoardForm : BoardForm, IObserver
     {
         public MatrixBoardForm(StockMarket stockMarket) : base(stockMarket)
         {
             InitializeComponent();
+        }
+
+        public void UpdateObservers()
+        {
+            List<Stock> stocks = stockMarket.GetStocks();
+            UpdateBoard(stocks);
+        }
+
+        private void MatrixBoardForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            stockMarket.Detach(this);
         }
     }
 }

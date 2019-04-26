@@ -10,13 +10,47 @@ using System.Windows.Forms;
 
 namespace StockMarket___Observer_Pattern
 {
-    partial class BoardForm : Form
+    public partial class BoardForm : Form
     {
         protected StockMarket stockMarket;
+
+        public BoardForm()
+        {
+            InitializeComponent();
+        }
+
         public BoardForm(StockMarket stockMarket)
         {
             InitializeComponent();
             this.stockMarket = stockMarket;
+        }
+
+        protected void UpdateBoard(List<Stock> stocks)
+        {
+            ClearAllListBoxes();
+            foreach(Stock stock in stocks)
+            {
+                Console.WriteLine($"Updating stock: {stock.GetName()}");
+                AddStock(stock);
+            }
+        }
+
+        private void ClearAllListBoxes()
+        {
+            stockListBox.Items.Clear();
+            currentPriceListbox.Items.Clear();
+            relativeDifferenceListBox.Items.Clear();
+        }
+
+        private void AddStock(Stock stock)
+        {
+            decimal currentPrice = stock.GetCurrentPrice();
+            decimal openPrice = stock.GetOpeningPrice();
+
+            stockListBox.Items.Add(stock.GetName());
+            currentPriceListbox.Items.Add($"€{currentPrice}");
+            
+            relativeDifferenceListBox.Items.Add($"{((openPrice - currentPrice) / openPrice):0.00}%");
         }
     }
 }

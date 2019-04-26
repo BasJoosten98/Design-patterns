@@ -40,14 +40,15 @@
             this.dayLbl.TabIndex = 3;
             this.dayLbl.Text = "Date: ";
             // 
-            // NewPaperForm
+            // NewsPaperForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 289);
             this.Controls.Add(this.dayLbl);
-            this.Name = "NewPaperForm";
+            this.Name = "NewsPaperForm";
             this.Text = "NewPaperForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewsPaperForm_FormClosed);
             this.Controls.SetChildIndex(this.dayLbl, 0);
             this.ResumeLayout(false);
             this.PerformLayout();

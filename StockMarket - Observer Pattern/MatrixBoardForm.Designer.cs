@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(387, 247);
             this.Name = "MatrixBoardForm";
             this.Text = "MatrixBoardForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MatrixBoardForm_FormClosed);
             this.ResumeLayout(false);
 
         }

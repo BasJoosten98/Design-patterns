@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StockMarket___Observer_Pattern
 {
-    interface IObserver
+    public interface IObserver
     {
-        void Update();
+        void UpdateObservers();
     }
 }
