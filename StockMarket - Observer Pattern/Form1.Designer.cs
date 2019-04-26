@@ -43,7 +43,7 @@
             this.openMatrixBoardBtn.TabIndex = 0;
             this.openMatrixBoardBtn.Text = "Open Matrix Board";
             this.openMatrixBoardBtn.UseVisualStyleBackColor = true;
-            this.openMatrixBoardBtn.Click += new System.EventHandler(this.openMatrixBoardBtn_Click);
+            this.openMatrixBoardBtn.Click += new System.EventHandler(this.OpenMatrixBoardBtn_Click);
             // 
             // openNewsPaperBtn
             // 
@@ -53,11 +53,11 @@
             this.openNewsPaperBtn.TabIndex = 1;
             this.openNewsPaperBtn.Text = "Open News Paper";
             this.openNewsPaperBtn.UseVisualStyleBackColor = true;
-            this.openNewsPaperBtn.Click += new System.EventHandler(this.openNewsPaperBtn_Click);
+            this.openNewsPaperBtn.Click += new System.EventHandler(this.OpenNewsPaperBtn_Click);
             // 
             // stockMarketTimer
             // 
-            this.stockMarketTimer.Interval = 1000;
+            this.stockMarketTimer.Interval = 250;
             this.stockMarketTimer.Tick += new System.EventHandler(this.stockMarketTimer_Tick_1);
             // 
             // startStopBtn

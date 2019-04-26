@@ -34,11 +34,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 247);
+            this.ClientSize = new System.Drawing.Size(387, 286);
             this.Name = "MatrixBoardForm";
             this.Text = "MatrixBoardForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MatrixBoardForm_FormClosed);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

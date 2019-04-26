@@ -25,9 +25,12 @@ namespace StockMarket___Observer_Pattern
             int stockMarketTime = stockMarket.GetTime();
             // Every second simulates an hour, 24 seconds one day, 
             // the day is over and the newspaper is 'deliverd' every day.
-            if (stockMarketTime > 0 && (stockMarketTime % 2400) == 0)
+            if ((stockMarketTime % 24000) == 0)
             {
                 UpdateBoard(stocks);
+                DateTime date = DateTime.Today.Date;
+                date = date.AddDays(1);
+                dayLbl.Text = $"Date: {date.Year}-{date.Month}-{date.Day}";
             }
         }
 

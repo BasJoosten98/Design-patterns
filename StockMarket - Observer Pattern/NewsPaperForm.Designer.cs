@@ -34,7 +34,7 @@
             // dayLbl
             // 
             this.dayLbl.AutoSize = true;
-            this.dayLbl.Location = new System.Drawing.Point(12, 257);
+            this.dayLbl.Location = new System.Drawing.Point(12, 278);
             this.dayLbl.Name = "dayLbl";
             this.dayLbl.Size = new System.Drawing.Size(36, 13);
             this.dayLbl.TabIndex = 3;
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 289);
+            this.ClientSize = new System.Drawing.Size(391, 300);
             this.Controls.Add(this.dayLbl);
             this.Name = "NewsPaperForm";
             this.Text = "NewPaperForm";

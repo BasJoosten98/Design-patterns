@@ -10,7 +10,14 @@ namespace StockMarket___Observer_Pattern
 		private decimal openingPrice;
 		private decimal currentPrice;
 
-		public string GetName()
+        public Stock(string name, decimal initialPrice)
+        {
+            this.name = name;
+            openingPrice = initialPrice;
+            currentPrice = initialPrice;
+        }
+
+        public string GetName()
 		{
 			return name;
 		}
@@ -25,22 +32,27 @@ namespace StockMarket___Observer_Pattern
             if (rng.NextDouble() < 1 - rng.NextDouble())
             {
                 decimal newPrice = GetCurrentPrice();
-                decimal priceChange = rng.Next(1, 10) / 100.0m;
-                // 0 or 1 just a coin toss for increase or decrease.
-                switch (rng.Next(2))
+                decimal priceChange = rng.Next(10, 25) / 100.0m;
+
+                // To avoid repetitive and more or less 50-50 behaviour.
+                if (rng.NextDouble() < 1 - rng.NextDouble())
                 {
-                    case 0:
-                        newPrice -= priceChange;
-                        break;
-                    default:
-                        newPrice += priceChange;
-                        break;
+                    newPrice -= priceChange;
+                }
+                else
+                {
+                    newPrice += priceChange;
                 }
                 SetCurrentPrice(newPrice);
             }
         }
 
-		public decimal GetCurrentPrice()
+        public decimal GetDifference()
+        {
+            return (currentPrice - openingPrice) / openingPrice;
+        }
+
+        public decimal GetCurrentPrice()
 		{
 			return currentPrice;
 		}
@@ -53,12 +65,6 @@ namespace StockMarket___Observer_Pattern
 		public decimal GetOpeningPrice()
 		{
 			return openingPrice;
-		}
-
-		public Stock(string name, decimal initialPrice)
-		{
-			this.name = name;
-            openingPrice = initialPrice;
 		}
 	}
 }

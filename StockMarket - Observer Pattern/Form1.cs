@@ -36,7 +36,7 @@ namespace StockMarket___Observer_Pattern
             } 
         }
 
-        private void openMatrixBoardBtn_Click(object sender, EventArgs e)
+        private void OpenMatrixBoardBtn_Click(object sender, EventArgs e)
         {
             if (matrixBoardForm == null || matrixBoardForm.IsDisposed)
             {
@@ -48,7 +48,7 @@ namespace StockMarket___Observer_Pattern
             matrixBoardForm.Show();
         }
 
-        private void openNewsPaperBtn_Click(object sender, EventArgs e)
+        private void OpenNewsPaperBtn_Click(object sender, EventArgs e)
         {
             if (newsPaperForm == null || newsPaperForm.IsDisposed)
             {

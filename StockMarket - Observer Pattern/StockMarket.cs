@@ -34,7 +34,7 @@ namespace StockMarket___Observer_Pattern
         public void IncrementTime(int amount)
         {
             stockMarketTime += amount;
-            if (stockMarketTime % 2400 == 0)
+            if (stockMarketTime % 24000 == 0)
             {
                 // Update all opening prices.
                 NewDay();

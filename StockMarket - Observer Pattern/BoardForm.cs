@@ -30,7 +30,6 @@ namespace StockMarket___Observer_Pattern
             ClearAllListBoxes();
             foreach(Stock stock in stocks)
             {
-                Console.WriteLine($"Updating stock: {stock.GetName()}");
                 AddStock(stock);
             }
         }
@@ -46,11 +45,17 @@ namespace StockMarket___Observer_Pattern
         {
             decimal currentPrice = stock.GetCurrentPrice();
             decimal openPrice = stock.GetOpeningPrice();
+            decimal difference = stock.GetDifference();
+            string increaseOrDecrease = string.Empty;
+
+            if (difference > 0)
+            {
+                increaseOrDecrease = "+";
+            }
 
             stockListBox.Items.Add(stock.GetName());
             currentPriceListbox.Items.Add($"€{currentPrice}");
-            
-            relativeDifferenceListBox.Items.Add($"{((openPrice - currentPrice) / openPrice):0.00}%");
+            relativeDifferenceListBox.Items.Add($"{increaseOrDecrease}{difference:0.00}%");
         }
     }
 }
