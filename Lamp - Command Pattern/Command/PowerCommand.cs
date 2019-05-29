@@ -11,8 +11,8 @@ namespace Week6
 
         public PowerCommand(Lamp Lamp, bool On)
         {
-            this.isOn = On;
-            this.lamp = Lamp;
+            isOn = On;
+            lamp = Lamp;
         }
         public void Execute()
         {

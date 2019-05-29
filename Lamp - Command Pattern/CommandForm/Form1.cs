@@ -25,7 +25,7 @@ namespace CommandForm
             lamp2 = new Lamp(picBox2);
             cal = new Caller();
             fillListBoxes();
-            this.Refresh();
+            Refresh();
         }
 
         private void fillListBoxes()
@@ -36,8 +36,8 @@ namespace CommandForm
             lbActions.Items.Add(Color.Red);
             lbActions.Items.Add(Color.Blue);
             lbActions.Items.Add(Color.Green);
-            lbActions.Items.Add(false);
-            lbActions.Items.Add(true);
+            lbActions.Items.Add(Power.OFF);
+            lbActions.Items.Add(Power.ON);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -49,9 +49,9 @@ namespace CommandForm
                 Lamp l = (Lamp)lbLamps.Items[indexLamp];
                 Object o = lbActions.Items[indexAction];
 
-                if(o is bool)
+                if(o is Power)
                 {
-                    PowerCommand pc = new PowerCommand(l, (bool)o);
+                    PowerCommand pc = new PowerCommand(l, Convert.ToBoolean(o));
                     cal.AddAnimation(pc);
                 }
                 else if(o is Color)

@@ -43,6 +43,7 @@
     <Compile Include="AnimationCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Lamp.cs" />
+    <Compile Include="Power.cs" />
     <Compile Include="PowerCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
