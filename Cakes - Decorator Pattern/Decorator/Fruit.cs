@@ -6,8 +6,8 @@ namespace Decorator
 {
 	public abstract class Fruit : ToppingBase
 	{
-        public Fruit(string name)
-            :base(name)
+        public Fruit(string name, CakeBase Next)
+            : base(name, Next)
         {
 
         }

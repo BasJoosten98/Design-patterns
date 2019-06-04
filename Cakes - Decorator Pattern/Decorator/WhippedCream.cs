@@ -6,14 +6,14 @@ namespace Decorator
 {
 	public class WhippedCream : Cream
 	{
-        public WhippedCream(string name)
-            :base(name)
+        public WhippedCream(string name, CakeBase Next)
+            : base(name, Next)
         {
 
         }
         public override CakeBase Copy()
         {
-            CakeBase cb = new WhippedCream(name);
+            CakeBase cb = new WhippedCream(name, NextBase);
             if (NextBase != null)
             {
                 ((ToppingBase)cb).NextBase = NextBase.Copy();

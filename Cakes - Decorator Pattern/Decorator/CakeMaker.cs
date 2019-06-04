@@ -15,10 +15,10 @@ namespace Decorator
             ingredients = new List<CakeBase>();
             ingredients.Add(new ChocolateCake("Chocolate Cake"));
             ingredients.Add(new FruitCake("Fruit Cake"));
-            ingredients.Add(new ChocoCream("Choco Cream"));
-            ingredients.Add(new WhippedCream("Whipped Cream"));
-            ingredients.Add(new Strawberry("Strawberry"));
-            ingredients.Add(new ForestFruits("Forest Fruits"));
+            ingredients.Add(new ChocoCream("Choco Cream", null));
+            ingredients.Add(new WhippedCream("Whipped Cream", null));
+            ingredients.Add(new Strawberry("Strawberry", null));
+            ingredients.Add(new ForestFruits("Forest Fruits", null));
         }
 
         private CakeBase getCakeBaseByName(string name)
